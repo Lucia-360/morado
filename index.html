@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CreativeJob</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+    <strong>CreativeJob</strong>
+</header>
+
+<main id="pantallaInicio" class="pantalla activa">
+    <section class="hero">
+        <div class="hero-contenido">
+            <p class="etiqueta">CREATIVEJOB</p>
+            <h1>Convierte tu talento en una mejor oportunidad laboral.</h1>
+            <p>Aprende a presentar mejor tu currículum, portafolio y experiencia profesional.</p>
+            <button id="btnComenzar" class="btn btn-blanco" type="button">Comenzar</button>
+        </div>
+    </section>
+</main>
+
+<main id="pantallaRegistro" class="pantalla oculta">
+    <section class="card">
+        <span class="paso">PASO 1</span>
+        <h2>Cuéntanos sobre ti</h2>
+        <p>Completa todos los datos para continuar.</p>
+
+        <form id="registroForm">
+            <label for="nombre">Nombre</label>
+            <input id="nombre" type="text" required>
+
+            <label for="correo">Correo electrónico</label>
+            <input id="correo" type="email" required>
+
+            <label for="telefono">Número de teléfono</label>
+            <input id="telefono" type="tel" required>
+
+            <label for="profesion">Profesión</label>
+            <select id="profesion" required>
+                <option value="">Selecciona tu profesión</option>
+                <option>Artista</option>
+                <option>Fotógrafo</option>
+                <option>Ilustrador</option>
+                <option>Diseñador</option>
+                <option>Pintor</option>
+                <option>Animador</option>
+                <option>Otro</option>
+            </select>
+
+            <button class="btn btn-principal" type="submit">Continuar</button>
+        </form>
+        <p id="errorRegistro" class="error"></p>
+    </section>
+</main>
+
+<main id="pantallaNecesidad" class="pantalla oculta">
+    <section class="card">
+        <span class="paso">PASO 2</span>
+        <h2>¿Qué necesitas aprender?</h2>
+        <p>Elige una opción para recibir consejos adaptados a tu profesión.</p>
+
+        <div class="opciones">
+            <button class="opcion" data-necesidad="curriculum" type="button">
+                <span class="icono">CV</span>
+                <strong>Currículum</strong>
+                <span>Presenta mejor tu experiencia.</span>
+            </button>
+
+            <button class="opcion" data-necesidad="portafolio" type="button">
+                <span class="icono">PF</span>
+                <strong>Portafolio</strong>
+                <span>Presenta mejor tus proyectos.</span>
+            </button>
+
+            <button class="opcion" data-necesidad="entrevista" type="button">
+                <span class="icono">EN</span>
+                <strong>Entrevistas</strong>
+                <span>Prepárate y destaca.</span>
+            </button>
+        </div>
+        <p id="errorNecesidad" class="error"></p>
+    </section>
+</main>
+
+<main id="pantallaConsejos" class="pantalla oculta">
+    <section class="card">
+        <span class="paso">PASO 3</span>
+        <p id="saludoConsejos" class="saludo"></p>
+        <h2 id="tituloConsejos">Tus consejos</h2>
+        <p id="descripcionNecesidad"></p>
+
+        <div id="listaConsejos" class="lista-consejos"></div>
+
+        <div class="acciones">
+            <button id="btnCrearCurriculum" class="btn btn-principal oculto" type="button">
+                Crear mi currículum
+            </button>
+
+            <button id="btnCrearPortafolio" class="btn btn-principal oculto" type="button">
+                Crear mi portafolio
+            </button>
+
+            <button id="btnVolverNecesidad" class="btn btn-secundario" type="button">
+                Elegir otra necesidad
+            </button>
+        </div>
+    </section>
+</main>
+
+<main id="pantallaCurriculum" class="pantalla oculta">
+    <section class="wide-card">
+        <div class="section-header">
+            <span class="paso">CREADOR DE CURRÍCULUM</span>
+            <h2>Construye tu currículum</h2>
+            <p>Completa los datos y revisa tu CV antes de guardarlo como PDF.</p>
+        </div>
+
+        <div class="editor-grid">
+            <aside class="ayuda">
+                <h3>Consejos para tu CV</h3>
+                <div id="consejosCv"></div>
+            </aside>
+
+            <div class="editor">
+                <label for="cvFoto">Foto de perfil</label>
+                <input id="cvFoto" type="file" accept="image/*">
+                <p class="foto-ayuda">La foto aparecerá en la vista previa del CV.</p>
+
+                <label for="cvNombre">Nombre completo</label>
+                <input id="cvNombre" type="text">
+
+                <label for="cvProfesion">Profesión / cargo</label>
+                <input id="cvProfesion" type="text">
+
+                <label for="cvContacto">Contacto</label>
+                <input id="cvContacto" type="text">
+
+                <label for="cvPerfil">Perfil profesional</label>
+                <textarea id="cvPerfil" rows="5"></textarea>
+
+                <label for="cvExperiencia">Experiencia</label>
+                <textarea id="cvExperiencia" rows="8"></textarea>
+
+                <label for="cvEducacion">Educación</label>
+                <textarea id="cvEducacion" rows="6"></textarea>
+
+                <label for="cvHabilidades">Habilidades</label>
+                <textarea id="cvHabilidades" rows="6"></textarea>
+
+                <div class="acciones">
+                    <button id="btnDescargarCv" class="btn btn-principal" type="button">
+                        Descargar / guardar PDF
+                    </button>
+                    <button id="btnVolverConsejos" class="btn btn-secundario" type="button">
+                        Volver a consejos
+                    </button>
+                </div>
+
+                <div class="preview-box">
+                    <h3>Vista previa</h3>
+                    <article id="cvPreview" class="cv-preview">
+                        <aside class="cv-side">
+                            <img id="previewFoto" class="cv-foto" src="" alt="Foto de perfil">
+                            <h3>EDUCACIÓN</h3>
+                            <p id="previewEducacion">Tu educación aparecerá aquí.</p>
+                            <h3>SKILLS</h3>
+                            <p id="previewHabilidades">Tus habilidades aparecerán aquí.</p>
+                            <h3>CONTACT</h3>
+                            <p id="previewContactoSide">Tu contacto aparecerá aquí.</p>
+                        </aside>
+                        <section class="cv-main">
+                            <h1 id="previewNombre">TU NOMBRE</h1>
+                            <h2 id="previewProfesion">TU PROFESIÓN</h2>
+                            <p id="previewPerfil" class="cv-summary">Tu perfil aparecerá aquí.</p>
+                            <h3>EXPERIENCIA</h3>
+                            <p id="previewExperiencia">Tu experiencia aparecerá aquí.</p>
+                        </section>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<main id="pantallaPortafolio" class="pantalla oculta">
+    <section class="wide-card">
+        <div class="section-header">
+            <span class="paso">CREADOR DE PORTAFOLIO</span>
+            <h2>Construye tu portafolio</h2>
+        </div>
+
+        <div class="editor-grid">
+            <aside class="ayuda">
+                <h3>Consejos para tu portafolio</h3>
+                <div id="consejosPortafolio"></div>
+            </aside>
+
+            <div class="editor">
+                <h3>Portada</h3>
+
+                <label for="pfTitulo">Nombre de la obra o trabajo</label>
+                <input id="pfTitulo" type="text">
+
+                <label for="pfNombre">Nombre del autor</label>
+                <input id="pfNombre" type="text">
+
+                <label for="pfProfesion">Profesión</label>
+                <input id="pfProfesion" type="text">
+
+                <label for="pfCorreo">Correo</label>
+                <input id="pfCorreo" type="email">
+
+                <label for="pfTelefono">Teléfono</label>
+                <input id="pfTelefono" type="tel">
+
+                <label for="pfCiudad">Ciudad / país</label>
+                <input id="pfCiudad" type="text">
+
+                <label for="pfBio">Presentación</label>
+                <textarea id="pfBio" rows="5"></textarea>
+
+                <hr>
+
+                <h3>Proyecto</h3>
+
+                <label for="nombreProyecto">Nombre del proyecto</label>
+                <input id="nombreProyecto" type="text">
+
+                <label for="descripcionProyecto">Descripción</label>
+                <textarea id="descripcionProyecto" rows="5"></textarea>
+
+                <label for="rolProyecto">¿Qué hiciste en este proyecto?</label>
+                <input id="rolProyecto" type="text">
+
+                <label for="herramientasProyecto">Herramientas utilizadas</label>
+                <input id="herramientasProyecto" type="text">
+
+                <label for="imagenProyecto">Imágenes del proyecto</label>
+                <input id="imagenProyecto" type="file" accept="image/*" multiple>
+                <p class="foto-ayuda">Puedes seleccionar varias imágenes de una vez.</p>
+
+                <label for="enlaceProyecto">Enlace</label>
+                <input id="enlaceProyecto" type="url">
+
+                <div class="acciones">
+                    <button id="btnAgregarProyecto" class="btn btn-principal" type="button">
+                        Agregar proyecto
+                    </button>
+
+                    <button id="btnDescargarPortafolio" class="btn btn-principal" type="button">
+                        Descargar / guardar PDF
+                    </button>
+
+                    <button id="btnVolverConsejosPortafolio" class="btn btn-secundario" type="button">
+                        Volver a consejos
+                    </button>
+                </div>
+
+                <div class="preview-box">
+                    <h3>Vista previa</h3>
+                    <div id="portafolioPreview" class="portfolio-preview">
+                        <p>Aquí aparecerán tus proyectos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<section id="portfolioPrint" class="portfolio-print" aria-hidden="true">
+    <div id="portfolioPages"></div>
+</section>
+
+<footer>
+    <p>CreativeJob · Herramientas para profesionales creativos.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
