@@ -22,3 +22,41 @@ function v(id,fb){return document.getElementById(id).value.trim()||fb}function a
 ["cvNombre","cvProfesion","cvContacto","cvPerfil","cvExperiencia","cvEducacion","cvHabilidades"].forEach(id=>document.getElementById(id).addEventListener("input",actualizarVistaPrevia));
 btnDescargarCv.addEventListener("click",()=>{actualizarVistaPrevia();window.print()});
 const guardado=localStorage.getItem("usuario");if(guardado){try{usuarioActual=JSON.parse(guardado);document.getElementById("nombre").value=usuarioActual.nombre||"";document.getElementById("correo").value=usuarioActual.correo||"";document.getElementById("telefono").value=usuarioActual.telefono||"";document.getElementById("profesion").value=usuarioActual.profesion||""}catch(e){localStorage.removeItem("usuario")}}
+/* ==============================
+   BOTÓN CREAR CURRÍCULUM - V3
+============================== */
+
+const botonCrearCV = document.getElementById("btnCrearCurriculum");
+const pantallaConsejosCV = document.getElementById("pantallaConsejos");
+const pantallaCurriculumCV = document.getElementById("pantallaCurriculum");
+
+if (botonCrearCV) {
+
+    botonCrearCV.addEventListener("click", function () {
+
+        console.log("Botón Crear Currículum funcionando");
+
+        pantallaConsejosCV.classList.add("saliendo");
+
+        setTimeout(function () {
+
+            pantallaConsejosCV.classList.add("oculta");
+            pantallaConsejosCV.classList.remove("saliendo");
+
+            pantallaCurriculumCV.classList.remove("oculta");
+            pantallaCurriculumCV.classList.add("entrando");
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+            setTimeout(function () {
+                pantallaCurriculumCV.classList.remove("entrando");
+            }, 700);
+
+        }, 600);
+
+    });
+
+}
